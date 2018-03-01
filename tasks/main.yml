@@ -1,0 +1,48 @@
+- name: depedencies
+  pip:
+    name: "{{item}}"
+  with_items:
+    - datadog
+
+- name: disk-usage script
+  copy:
+    src: datadog-docker-disk-usage.py
+    dest: /usr/local/bin/
+    mode: 0755
+
+- name: disk-usage cron
+  cron:
+    cron_file: datadog-docker-disk-usage
+    user: root
+    job: "/usr/local/bin/datadog-docker-disk-usage.py &>> /var/log/datadog-docker-disk-usage.log"
+
+- cronvar:
+    name: DATADOG_API_KEY
+    value: "%DATADOG_API_KEY_TEMPLATE%"
+    cron_file: datadog-docker-disk-usage
+
+- name: docker config file dir
+  file:
+    name: /etc/dd-agent/conf.d/
+    state: directory
+
+- name: docker config file
+  copy:
+    src: docker_daemon.yaml
+    dest: /etc/dd-agent/conf.d/
+
+- name: datadog auto discovery config dir
+  file:
+    name: /etc/dd-agent/conf.d/auto_conf/
+    state: directory
+
+- name: jmx auto discovery config file
+  copy:
+    src: jmx_auto_conf.yaml
+    dest: /etc/dd-agent/conf.d/auto_conf/jmx.yaml
+
+- name: pull image
+  docker_image:
+    name: "{{item}}"
+  with_items:
+    - datadog/docker-dd-agent:latest-jmx

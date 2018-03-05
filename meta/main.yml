@@ -53,5 +53,5 @@ galaxy_info:
     #       Maximum 20 tags per role.
 
 dependencies:
-    mergermarket.pip
-    mergermarket.docker
+    - mergermarket.pip
+    - mergermarket.docker

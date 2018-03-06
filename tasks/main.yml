@@ -1,8 +1,6 @@
 - name: depedencies
   pip:
-    name: "{{item}}"
-  with_items:
-    - datadog
+    name: "datadog"
 
 - name: disk-usage script
   copy:
@@ -43,6 +41,4 @@
 
 - name: pull image
   docker_image:
-    name: "{{item}}"
-  with_items:
-    - datadog/docker-dd-agent:latest-jmx
+    name: "datadog/docker-dd-agent:latest-jmx"

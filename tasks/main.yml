@@ -21,24 +21,24 @@
 
 - name: docker config file dir
   file:
-    name: /etc/dd-agent/conf.d/
+    name: /etc/datadog-agent/conf.d/docker.d/
     state: directory
 
 - name: docker config file
   copy:
-    src: docker_daemon.yaml
-    dest: /etc/dd-agent/conf.d/
+    src: docker_conf.yaml
+    dest: /etc/datadog-agent/conf.d/docker.d/conf.yaml
 
-- name: datadog auto discovery config dir
+- name: jmx config file dir
   file:
-    name: /etc/dd-agent/conf.d/auto_conf/
+    name: /etc/datadog-agent/conf.d/jmx.d/
     state: directory
 
-- name: jmx auto discovery config file
+- name: jmx config file
   copy:
-    src: jmx_auto_conf.yaml
-    dest: /etc/dd-agent/conf.d/auto_conf/jmx.yaml
+    src: jmx_conf.yaml
+    dest: /etc/datadog-agent/conf.d/jmx.d/conf.yaml
 
 - name: pull image
   docker_image:
-    name: "datadog/docker-dd-agent:latest-jmx"
+    name: "datadog/agent:latest-jmx"

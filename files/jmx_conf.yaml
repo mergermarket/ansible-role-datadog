@@ -1,5 +1,4 @@
-# Values can be Docker Image name or Label (Ref.: https://docs.datadoghq.com/agent/autodiscovery/)
-docker_images:
+ad_identifiers:
   - jmx
 
 init_config:

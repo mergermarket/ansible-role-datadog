@@ -1,7 +1,8 @@
+---
 init_config:
 
 instances:
-  - ## The agent honors the DOCKER_HOST, DOCKER_CERT_PATH and DOCKER_TLS_VERIFY
+  -  ## The agent honors the DOCKER_HOST, DOCKER_CERT_PATH and DOCKER_TLS_VERIFY
     ## environment variables to setup the connection to the server.
     ## See https://docs.docker.com/engine/reference/commandline/cli/#environment-variables
 

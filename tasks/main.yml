@@ -1,3 +1,4 @@
+---
 - name: depedencies
   pip:
     name: "datadog"
@@ -10,11 +11,13 @@
 
 - name: disk-usage cron
   cron:
-    cron_file: datadog-docker-disk-usage
+    name: disk-usage-cron
     user: root
     job: "/usr/local/bin/datadog-docker-disk-usage.py &>> /var/log/datadog-docker-disk-usage.log"
+    cron_file: datadog-docker-disk-usage
 
-- cronvar:
+- name: Add datadog key
+  cronvar:
     name: DATADOG_API_KEY
     value: "%DATADOG_API_KEY_TEMPLATE%"
     cron_file: datadog-docker-disk-usage

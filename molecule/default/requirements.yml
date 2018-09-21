@@ -1,0 +1,4 @@
+---
+# from galaxy
+# - src: mergermarket.pip
+- src: mergermarket.docker

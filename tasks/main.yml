@@ -1,7 +1,23 @@
 ---
-- name: depedencies
+
+- name: Import Roles
+  block:
+    - name: Import EPEL repository for RHEL/CentOS.
+      import_role:
+        name: geerlingguy.repo-epel
+      when: ansible_distribution == "CentOS"
+    - name: Import docker role
+      import_role:
+        name: mergermarket.docker
+
+- name: Install Required OS Packages
+  package:
+    name: cronie
+    state: present
+
+- name: Install Pip Packages
   pip:
-    name: "datadog"
+    name: datadog
 
 - name: disk-usage script
   copy:
@@ -44,4 +60,4 @@
 
 - name: pull image
   docker_image:
-    name: "datadog/agent:latest-jmx"
+    name: datadog/agent:latest-jmx

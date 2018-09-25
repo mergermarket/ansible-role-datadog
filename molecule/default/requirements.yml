@@ -1,4 +1,6 @@
 ---
 # from galaxy
-# - src: mergermarket.pip
+- src: geerlingguy.repo-epel
+- src: geerlingguy.pip
+  version: 1.2.2
 - src: mergermarket.docker

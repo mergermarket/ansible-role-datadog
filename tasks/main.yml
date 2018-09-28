@@ -1,15 +1,5 @@
 ---
 
-- name: Import Roles
-  block:
-    - name: Import EPEL repository for RHEL/CentOS.
-      import_role:
-        name: geerlingguy.repo-epel
-      when: ansible_distribution == "CentOS"
-    - name: Import docker role
-      import_role:
-        name: mergermarket.docker
-
 - name: Install Required OS Packages
   package:
     name: cronie

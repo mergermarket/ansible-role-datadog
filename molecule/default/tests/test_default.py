@@ -29,4 +29,4 @@ def test_datadog_jmx_config_file_exists(host):
 
 def test_datadog_docker_image_exists(host):
     output = host.check_output('docker images datadog/agent -q | wc -l')
-    assert '1' in output
+    assert output.strip() == '1'

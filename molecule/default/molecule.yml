@@ -9,17 +9,14 @@ lint:
 platforms:
   - name: centos_image
     image: centos:7
-    privileged: true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
   - name: amazon_linux
     image: amazonlinux:latest
-    privileged: true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 provisioner:
   name: ansible
-  log: true
   lint:
     name: ansible-lint
 scenario:

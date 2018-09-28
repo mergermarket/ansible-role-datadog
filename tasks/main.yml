@@ -1,6 +1,13 @@
-- name: depedencies
+---
+
+- name: Install Required OS Packages
+  package:
+    name: cronie
+    state: present
+
+- name: Install Pip Packages
   pip:
-    name: "datadog"
+    name: datadog
 
 - name: disk-usage script
   copy:
@@ -10,11 +17,13 @@
 
 - name: disk-usage cron
   cron:
-    cron_file: datadog-docker-disk-usage
+    name: disk-usage-cron
     user: root
     job: "/usr/local/bin/datadog-docker-disk-usage.py &>> /var/log/datadog-docker-disk-usage.log"
+    cron_file: datadog-docker-disk-usage
 
-- cronvar:
+- name: Add datadog key
+  cronvar:
     name: DATADOG_API_KEY
     value: "%DATADOG_API_KEY_TEMPLATE%"
     cron_file: datadog-docker-disk-usage
@@ -41,4 +50,4 @@
 
 - name: pull image
   docker_image:
-    name: "datadog/agent:latest-jmx"
+    name: datadog/agent:latest-jmx

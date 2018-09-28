@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: geerlingguy.repo-epel
+      when: ansible_distribution == "CentOS"
+    - role: mergermarket.docker
+    - role: ../../..

@@ -27,6 +27,11 @@ def test_datadog_jmx_config_file_exists(host):
     assert f.exists
 
 
+def test_datadog_httpd_config_file_exists(host):
+    f = host.file('/etc/datadog-agent/conf.d/httpd.d/conf.yaml')
+    assert f.exists
+
+
 def test_datadog_docker_image_exists(host):
     output = host.check_output('docker images datadog/agent -q | wc -l')
     assert output.strip() == '1'

@@ -38,6 +38,16 @@
     src: docker_conf.yaml
     dest: /etc/datadog-agent/conf.d/docker.d/conf.yaml
 
+- name: httpd config file dir
+  file:
+    name: /etc/datadog-agent/conf.d/httpd.d/
+    state: directory
+
+- name: httpd config file
+  copy:
+    src: httpd_conf.yaml
+    dest: /etc/datadog-agent/conf.d/httpd.d/conf.yaml
+
 - name: jmx config file dir
   file:
     name: /etc/datadog-agent/conf.d/jmx.d/

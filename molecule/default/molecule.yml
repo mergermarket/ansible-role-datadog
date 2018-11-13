@@ -11,10 +11,6 @@ platforms:
     image: centos:7
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-  - name: amazon_linux
-    image: amazonlinux:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
 provisioner:
   name: ansible
   lint:

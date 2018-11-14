@@ -58,6 +58,16 @@
     src: jmx_conf.yaml
     dest: /etc/datadog-agent/conf.d/jmx.d/conf.yaml
 
+- name: tomcat config file dir
+  file:
+    name: /etc/datadog-agent/conf.d/tomcat.d/
+    state: directory
+
+- name: tomcat config file
+  copy:
+    src: tomcat_conf.yaml
+    dest: /etc/datadog-agent/conf.d/tomcat.d/auto_conf.yaml
+
 - name: pull image
   docker_image:
     name: datadog/agent:latest-jmx

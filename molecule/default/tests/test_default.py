@@ -27,6 +27,11 @@ def test_datadog_jmx_config_file_exists(host):
     assert f.exists
 
 
+def test_datadog_tomcat_config_file_exists(host):
+    f = host.file('/etc/datadog-agent/conf.d/tomcat.d/auto_conf.yaml')
+    assert f.exists
+
+
 def test_datadog_httpd_config_file_exists(host):
     f = host.file('/etc/datadog-agent/conf.d/httpd.d/conf.yaml')
     assert f.exists

@@ -15,28 +15,3 @@ def test_datadog_package_installed(host):
 def test_disk_usage_cron_script_exists(host):
     f = host.file('/etc/cron.d/datadog-docker-disk-usage')
     assert f.exists
-
-
-def test_docker_config_for_datadog_exists(host):
-    f = host.file('/etc/datadog-agent/conf.d/docker.d/conf.yaml')
-    assert f.exists
-
-
-def test_datadog_jmx_config_file_exists(host):
-    f = host.file('/etc/datadog-agent/conf.d/jmx.d/conf.yaml')
-    assert f.exists
-
-
-def test_datadog_tomcat_config_file_exists(host):
-    f = host.file('/etc/datadog-agent/conf.d/tomcat.d/auto_conf.yaml')
-    assert f.exists
-
-
-def test_datadog_httpd_config_file_exists(host):
-    f = host.file('/etc/datadog-agent/conf.d/httpd.d/conf.yaml')
-    assert f.exists
-
-
-def test_datadog_docker_image_exists(host):
-    output = host.check_output('docker images datadog/agent -q | wc -l')
-    assert output.strip() == '1'

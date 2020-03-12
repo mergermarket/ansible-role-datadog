@@ -1,8 +1,9 @@
 ---
 galaxy_info:
-  author: your name
-  description: your description
-  company: your company (optional)
+  role_name: datadog
+  author: Platform Team
+  description: Ansible Role that collects Thin Pool Docker metrics and send to Datadog
+  company: Acuris/Mergermarket
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value

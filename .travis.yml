@@ -17,13 +17,9 @@ before_install:
   - sudo apt-get -qq update
 
 install:
-  # Install ansible
-  - pip install ansible ansible-lint
-  # Install molecule
-  - pip install molecule testinfra
-  # Install Docker driver
-  - pip install docker
-  # Check ansible version
+  # Install required dependencies
+  - pip install ansible ansible-lint molecule testinfra docker flake8
+  # Check Ansible version
   - ansible --version
   # Create ansible.cfg with correct roles_path
   - printf '[defaults]\nroles_path=../' >ansible.cfg

@@ -8,6 +8,7 @@
 - name: Install Pip Packages
   pip:
     name: datadog
+    version: 0.40.1
 
 - name: disk-usage script
   copy:

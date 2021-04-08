@@ -8,4 +8,4 @@ docker run --rm -it \
     -w /$role_name \
         quay.io/ansible/molecule:3.0.2 \
             /bin/sh -c \
-            "pip3 install testinfra; molecule test"
+            "pip3 install pytest-testinfra; molecule test"

@@ -8,7 +8,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_datadog_package_installed(host):
-    pip_packages = host.pip_package.get_packages()
+    pip_packages = host.pip.get_packages()
     assert 'datadog' in pip_packages
 
 

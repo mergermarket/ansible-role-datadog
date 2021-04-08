@@ -10,10 +10,9 @@ lint: |
   ansible-lint .
   flake8
 platforms:
-  - name: centos_image
-    image: centos:7
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+  - name: instance
+    image: amazonlinux:2
+    pre_build_image: true
 provisioner:
   name: ansible
 scenario:

@@ -5,7 +5,12 @@
     name: cronie
     state: present
 
-- name: Install Pip Packages
+- name: Install pinned ver of Decorator Pip Package
+  pip:
+    name: decorator
+    version: 4.4.2
+
+- name: Install Datadog Pip Package
   pip:
     name: datadog
     version: 0.40.1

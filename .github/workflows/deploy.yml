@@ -27,5 +27,5 @@ jobs:
             yamllint
       - run: ansible --version
       - run: printf '[defaults]\nroles_path=../' >ansible.cfg
-      - run: molecule test
+      - run: molecule --debug test
       #- run: ansible-galaxy role import --token ${{ secrets.ANSIBLE_GALAXY_TOKEN }}  mergermarket ${{ github.event.repository.name }}

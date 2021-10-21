@@ -1,7 +1,7 @@
 Datadog
 =========
 
-[![Build Status](https://travis-ci.com/mergermarket/ansible-role-datadog.svg?branch=master)](https://travis-ci.com/mergermarket/ansible-role-datadog)
+[![Deploy to Ansible Galaxy](https://github.com/mergermarket/ansible-role-datadog/actions/workflows/deploy.yml/badge.svg)](https://github.com/mergermarket/ansible-role-datadog/actions/workflows/deploy.yml)
 
 Install Docker-based Datadog agent
 

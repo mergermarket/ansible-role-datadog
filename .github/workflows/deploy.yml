@@ -25,7 +25,8 @@ jobs:
             docker
             flake8
             yamllint
-      - run: sudo apt-get install -y python-setuptools 
+            setuptools
+      - run: sudo apt-get install -y python3-setuptools 
       - run: ansible --version
       - run: printf '[defaults]\nroles_path=../' >ansible.cfg
       - run: molecule --debug test

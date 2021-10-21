@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   role_name: datadog
-  author: Platform Team
+  author: mergermarket
   description: Ansible Role that collects Thin Pool Docker metrics and send to Datadog
   company: Acuris/Mergermarket
 

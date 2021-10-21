@@ -5,6 +5,17 @@
     name: cronie
     state: present
 
+- name: Install setuptools
+  package:
+    name:
+      - python
+      - python-setuptools
+      - pip
+      - gzip
+      - unzip
+      - tar
+      - git
+
 - name: Install pinned ver of Decorator Pip Package
   pip:
     name: decorator

@@ -27,6 +27,7 @@ jobs:
             yamllint
             setuptools
       - run: sudo apt-get install -y python3-setuptools 
+      - run: ansible_python_interpreter=/usr/bin/python3
       - run: ansible --version
       - run: printf '[defaults]\nroles_path=../' >ansible.cfg
       - run: molecule --debug test

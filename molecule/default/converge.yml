@@ -2,5 +2,5 @@
 - name: Converge
   hosts: all
   roles:
-    - role: mergermarket.docker
+    - role: mergermarket.datadog
     - role: ansible-role-datadog

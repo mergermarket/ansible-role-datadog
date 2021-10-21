@@ -25,6 +25,7 @@ jobs:
             docker
             flake8
             yamllint
+            setuptools
       - run: ansible --version
       - run: printf '[defaults]\nroles_path=../' >ansible.cfg
       - run: molecule --debug test

@@ -1,12 +1,12 @@
 ---
 
 - name: Install Required OS Packages
-  package:
+  ansible.builtin.dnf:
     name: cronie
     state: present
 
 - name: Install setuptools
-  package:
+  ansible.builtin.dnf:
     name:
       - python
       - python-setuptools
@@ -17,30 +17,30 @@
       - git
 
 - name: Install pinned ver of Decorator Pip Package
-  pip:
+  ansible.builtin.pip:
     name: decorator
     version: 4.4.2
 
 - name: Install Datadog Pip Package
-  pip:
+  ansible.builtin.pip:
     name: datadog
     version: 0.40.1
 
-- name: disk-usage script
-  copy:
+- name: Disk-usage script
+  ansible.builtin.copy:
     src: datadog-docker-disk-usage.py
     dest: /usr/local/bin/
     mode: 0755
 
-- name: disk-usage cron
-  cron:
+- name: Disk-usage cron
+  ansible.builtin.cron:
     name: disk-usage-cron
     user: root
     job: "/usr/local/bin/datadog-docker-disk-usage.py &>> /var/log/datadog-docker-disk-usage.log"
     cron_file: datadog-docker-disk-usage
 
 - name: Add datadog key
-  cronvar:
+  community.general.cronvar:
     name: DATADOG_API_KEY
     value: "%DATADOG_API_KEY_TEMPLATE%"
     cron_file: datadog-docker-disk-usage

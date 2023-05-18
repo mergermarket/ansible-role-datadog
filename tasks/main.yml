@@ -5,6 +5,7 @@
     name: cronie
     state: present
 
+
 - name: Install setuptools
   ansible.builtin.dnf:
     name:
@@ -15,6 +16,7 @@
       - unzip
       - tar
       - git
+      - lvm2
 
 - name: Install pinned ver of Decorator Pip Package
   ansible.builtin.pip:

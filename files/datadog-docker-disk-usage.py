@@ -12,9 +12,10 @@ options = {
 initialize(**options)
 
 data_percent = subprocess.check_output(
-    ["/sbin/lvs", "--no-headings", "-o", "data_percent"])
-metadata_percent = subprocess.check_output(
-    ["/sbin/lvs", "--no-headings", "-o", "metadata_percent"])
+    ["df", "--output=pcent", "/var/lib/docker", "|", "tail", "-n", "1"]
+).replace("%", "").strip()
+# metadata_percent = subprocess.check_output(
+#     ["/sbin/lvs", "--no-headings", "-o", "metadata_percent"])
 
 statsd.gauge('mmdocker.thinpool.data.in_use', float(data_percent))
-statsd.gauge('mmdocker.thinpool.metadata.in_use', float(metadata_percent))
+#statsd.gauge('mmdocker.thinpool.metadata.in_use', float(metadata_percent))

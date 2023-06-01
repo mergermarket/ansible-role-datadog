@@ -11,11 +11,14 @@ options = {
 
 initialize(**options)
 
+df = subprocess.Popen(
+    ["df", "--output=pcent", "/var/lib/docker"],
+    stdout=subprocess.PIPE
+)
+
 data_percent = subprocess.check_output(
-    ["df", "--output=pcent", "/var/lib/docker", "|", "tail", "-n", "1"]
-).replace("%", "").strip()
-# metadata_percent = subprocess.check_output(
-#     ["/sbin/lvs", "--no-headings", "-o", "metadata_percent"])
+    ["tail", "-n", "1"], stdin=df.stdout
+).decode("utf-8").replace("%", "").strip()
+df.wait()
 
 statsd.gauge('mmdocker.thinpool.data.in_use', float(data_percent))
-#statsd.gauge('mmdocker.thinpool.metadata.in_use', float(metadata_percent))

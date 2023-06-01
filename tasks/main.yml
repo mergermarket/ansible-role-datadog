@@ -26,7 +26,6 @@
 - name: Install Datadog Pip Package
   ansible.builtin.pip:
     name: datadog
-    version: 0.40.1
 
 - name: Disk-usage script
   ansible.builtin.copy:

@@ -17,6 +17,7 @@
       - tar
       - git
       - lvm2
+      - libxcrypt-compat
 
 - name: Install pinned ver of Decorator Pip Package
   ansible.builtin.pip:

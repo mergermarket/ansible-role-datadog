@@ -2,7 +2,7 @@
 
 role_name=${PWD##*/}
 
-docker run --rm -it \
+docker run --rm -t \
     -v $(pwd):/$role_name:ro \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -w /$role_name \

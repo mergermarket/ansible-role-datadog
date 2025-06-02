@@ -28,11 +28,6 @@
   ansible.builtin.pip:
     name: datadog
 
-# - name: Upgrade Paramiko to version 2.9.3 using embedded pip
-#   command: /opt/datadog-agent/embedded/bin/pip install --upgrade paramiko==2.9.3
-#   args:
-#     creates: /opt/datadog-agent/embedded/lib/python*/site-packages/paramiko
-
 - name: Disk-usage script
   ansible.builtin.copy:
     src: datadog-docker-disk-usage.py

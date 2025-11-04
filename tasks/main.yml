@@ -42,7 +42,8 @@
     cron_file: datadog-docker-disk-usage
 
 - name: Add datadog key
-  cronvar:
-    name: DATADOG_API_KEY
-    value: "%DATADOG_API_KEY_TEMPLATE%"
-    cron_file: datadog-docker-disk-usage
+  ansible.builtin.lineinfile:
+    path: /etc/cron.d/datadog-docker-disk-usage
+    line: "DATADOG_API_KEY=%DATADOG_API_KEY_TEMPLATE%"
+    create: false
+    mode: '0644'

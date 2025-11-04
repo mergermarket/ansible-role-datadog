@@ -42,7 +42,7 @@
     cron_file: datadog-docker-disk-usage
 
 - name: Add datadog key
-  community.general.cronvar:
+  cronvar:
     name: DATADOG_API_KEY
     value: "%DATADOG_API_KEY_TEMPLATE%"
     cron_file: datadog-docker-disk-usage
